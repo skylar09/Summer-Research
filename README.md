@@ -4,6 +4,8 @@
 [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)  
 
 
+<img src="https://user-images.githubusercontent.com/31603609/123133846-2c2a2900-d41e-11eb-87b6-35d99e2e6b03.png" width="500">
+
 --- 
 ### Meeting Date :date:
 1. [x] 6/10 (Thr) 4:30 - 5:30 pm 
