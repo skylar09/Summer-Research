@@ -10,7 +10,7 @@
 ### Meeting Date :date:
 1. [x] 6/10 (Thr) 4:30 - 5:30 pm 
 2. [x] 6/22 (Tue) 4:30 - 5:30 pm
-3. [ ] 6/29 (Tue) 4:30 - 5:30 pm
+3. [ ] 7/6 (Tue) 4:30 - 5:30 pm
 
 ---
 ### Hardware Status :hammer:
