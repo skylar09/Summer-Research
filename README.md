@@ -12,6 +12,7 @@
 2. [x] 6/22 (Tue) 4:30 - 5:30 pm
 3. [x] 7/6 (Tue) 4:30 - 5:30 pm
 4. [x] 7/13 (Tue) 4:30 - 5:30 pm
+5. [ ] 7/20 (Tue) 4:30 - 5:30 pm
 
 ---
 ### Hardware Status :hammer:
