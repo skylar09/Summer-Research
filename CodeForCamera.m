@@ -1,3 +1,6 @@
-cam = webcam('HD Pro Webcam C920');
+
+
+
+cam = webcam('HP Wide Vision HD Camera');
 
 preview(cam);

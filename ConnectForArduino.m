@@ -1,3 +1,5 @@
+clear all
+
 pause('on');
 a = arduino('COM3', 'Uno');
 s = servo(a,'D9');
