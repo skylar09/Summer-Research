@@ -81,7 +81,7 @@ end
 % highlight the longest line segment
 plot(xy_long(:,1),xy_long(:,2),'LineWidth',2,'Color','red');
 
-
+%notes: algorithm to find longest line
 
 
 
