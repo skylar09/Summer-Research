@@ -1,11 +1,16 @@
 clf;
 close all;
+
+
+
+
+
 %connects webcam to matlab and views video from camera
 
-cam = webcam('NexiGo N60 FHD Webcam');
+cam = webcam('HP Wide Vision HD Camera');
 
 preview(cam);
-pause(5);
+pause(0);
 %takes one frame from video as image
 
 closePreview(cam);
@@ -20,9 +25,12 @@ screenShot = imread('lineImg.jpg');
 %image(screenShot);
 %video size is 1920x1080
 grayImg = rgb2gray(img);
-%crop image to be get rid of extra (mess with numbers)
 
-cropImg = imcrop(grayImg, [600, 150, 600, 500]);
+
+
+cropImg = imcrop(grayImg, [600, 150, 600, 500]); 
+
+
 imshow(grayImg);
 %pause(2);
 %turnImg = imrotate(grayImg,33,'crop');
@@ -62,11 +70,11 @@ figure, imshow(cropImg), hold on
 max_len = 0;
 for k = 1:length(lines)
    xy = [lines(k).point1; lines(k).point2];
-   plot(xy(:,1),xy(:,2),'LineWidth',2,'Color','green');
+  % plot(xy(:,1),xy(:,2),'LineWidth',2,'Color','green');
 
    % Plot beginnings and ends of lines
-   plot(xy(1,1),xy(1,2),'x','LineWidth',2,'Color','blue');
-   plot(xy(2,1),xy(2,2),'x','LineWidth',2,'Color','green');
+   %plot(xy(1,1),xy(1,2),'x','LineWidth',2,'Color','blue');
+   %plot(xy(2,1),xy(2,2),'x','LineWidth',2,'Color','green');
 
 
    start_line = [xy(1,1),xy(1,2)];
@@ -80,7 +88,9 @@ for k = 1:length(lines)
 end
 % highlight the longest line segment
 plot(xy_long(:,1),xy_long(:,2),'LineWidth',2,'Color','red');
-
+%start and end of long line
+plot(xy_long(1,1),xy_long(1,2),'x','LineWidth',2,'Color','blue');
+plot(xy_long(2,1),xy_long(2,2),'x','LineWidth',2,'Color','green');
 %notes: algorithm to find longest line
 
 
