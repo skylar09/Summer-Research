@@ -1,16 +1,21 @@
-clf;
+    clf;
 close all;
 
-
-
+xCrop = 550;
+yCrop = 250;
+dxCrop = 600;
+dyCrop = 600;
 
 
 %connects webcam to matlab and views video from camera
 
-cam = webcam('HP Wide Vision HD Camera');
-
+cam = webcam('NexiGo N60 FHD Webcam');
+%'NexiGo N60 FHD Webcam'
+%webcam size 1920, 1080
+%'HP Wide Vision HD Camera'
+%webcam size is 640, 360
 preview(cam);
-pause(0);
+pause(3);
 %takes one frame from video as image
 
 closePreview(cam);
@@ -28,12 +33,14 @@ grayImg = rgb2gray(img);
 
 
 
-cropImg = imcrop(grayImg, [600, 150, 600, 500]); 
+% imcrop[x, y, dx(width), dy(height)]
+cropImg = imcrop(grayImg, [xCrop, yCrop, dxCrop, dyCrop]); 
 
 
-imshow(grayImg);
+
+imshow(cropImg);
 %pause(2);
-%turnImg = imrotate(grayImg,33,'crop');
+
 
 %line stuff
 BwLines = edge(cropImg,'sobel');
@@ -77,8 +84,7 @@ for k = 1:length(lines)
    %plot(xy(2,1),xy(2,2),'x','LineWidth',2,'Color','green');
 
 
-   start_line = [xy(1,1),xy(1,2)];
-   end_line = [xy(2,1) xy(2,2)];
+
    % Determine the endpoints of the longest line segment
    len = norm(lines(k).point1 - lines(k).point2);
    if ( len > max_len)
@@ -93,8 +99,27 @@ plot(xy_long(1,1),xy_long(1,2),'x','LineWidth',2,'Color','blue');
 plot(xy_long(2,1),xy_long(2,2),'x','LineWidth',2,'Color','green');
 %notes: algorithm to find longest line
 
+hold off;
 
 
+start_longLineCrop = [xy_long(1,1),xy_long(1,2)];
+end_longLineCrop = [xy_long(2,1), xy_long(2,2)];
+
+start_longLineOrigin = [xy_long(1,1)+xCrop, xy_long(1,2)+yCrop];
+end_longLineOrigin = [xy_long(2,1)+xCrop, xy_long(2,2)+yCrop];
+new = [start_longLineOrigin ; end_longLineOrigin];
+test = [600, 600];
+
+figure, imshow(img), hold on
+plot(new(:,1), new(:,2), 'LineWidth',2,'Color','red');
+%plotting start and end points on original imagine
+plot(start_longLineOrigin(1), start_longLineOrigin(2), 'x', 'LineWidth', 2,'Color', 'blue');
+plot(end_longLineOrigin(1), end_longLineOrigin(2), 'x', 'LineWidth', 2,'Color','green');
 
 
+plot([xCrop ; xCrop+dxCrop], [yCrop ; yCrop], 'LineWidth',1,'Color','black');
+plot([xCrop, xCrop], [yCrop, yCrop+dyCrop], 'LineWidth',1,'Color','black');
+plot([xCrop, xCrop+dxCrop], [yCrop+dyCrop, yCrop+dyCrop], 'LineWidth',1,'Color','black');
+plot([xCrop+dxCrop, xCrop+dxCrop], [yCrop, yCrop+dyCrop], 'LineWidth',1,'Color','black');
 
+plot(((start_longLineOrigin(1)+end_longLineOrigin(1))/2), ((start_longLineOrigin(2) + end_longLineOrigin(2))/2), 'x', 'LineWidth', 1, 'Color', 'cyan');
